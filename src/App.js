@@ -12,17 +12,11 @@ const App = () => {
 
   const dispatch = useDispatch()
 
-  window.test = () => {
-    axios.get('http://localhost:3000/db.json')
-      .then(({data}) => {
-        dispatch(setPizzas(data.pizzas))
-      })
-  }
-
   useEffect(() => {
-    axios.get('http://localhost:3000/db.json')
+    // перенсти в redux и подключить redux-thunk
+    axios.get('http://localhost:3001/pizzas')
       .then(({data}) => {
-        dispatch(setPizzas(data.pizzas))
+        dispatch(setPizzas(data))
       })
   }, [])
 
@@ -30,7 +24,7 @@ const App = () => {
     <div className="wrapper">
       <Header/>
       <div className="content">
-        <Route path='/' exact component={Home}/>}/>
+        <Route path='/' exact component={Home}/>
         <Route path='/cart' exact component={Cart}/>
       </div>
     </div>
