@@ -2,8 +2,11 @@ import {SET_CATEGORIES, SET_SORT_BY} from "../actionTypes";
 
 
 const initialState = {
-  sortBy: 'popular',
-  categories: 0
+  sortBy: {
+    type: 'popular',
+    order: 'desc'
+  },
+  categories: null
 }
 
 const filtersReducer = (state = initialState, action) => {
